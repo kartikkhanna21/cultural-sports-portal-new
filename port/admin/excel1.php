@@ -8,9 +8,9 @@ $columnHeader =  "Sr No." . "\t" . "Name" . "\t" . "Roll no." . "\t" . "Event_na
                     . "\t" . "Award Recieved" . "\t" . "Doc_name";
 
 $year=$_POST['year'];
-$event=$_POST['event'];
+$event=$_POST['event_'];
 $year=substr($year, 0, 4);
-$n=number_format($year);
+$n=(int)($yea);
 $n=$n+1;
 $year1=strval($n);
 $year .="-07-01" ;

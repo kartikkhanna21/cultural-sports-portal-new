@@ -54,22 +54,23 @@
     <div class="header"><p>Gap</p></div>
     <br>
     <br>
-    <form action="" method="post">
-    <div class="row">
+    <form action="excel1.php" method="post">
+      <div class="row">
         <div class="col-sm-2"> </div>
         <div class="col-sm-2">
             <div class="name">YEAR</div>
             <div class="value">
                 <select name="year" id="year">
                     <option value="2018-19">2018-19</option>
-                    <option value="2018-19">2019-20</option>
+                    <option value="2019-20">2019-20</option>
+                    <option value="2020-21">2020-21</option>
                 </select>
             </div>
         </div>
         <div class="col-sm-2">
             <div class="name">EVENT</div>
                 <div class="value">
-				    <select name="event" id="event">
+				    <select name="event_" id="event">
                          <option value="ALL">ALL</option>
                          <?php
                          $con= mysqli_connect('localhost','root','','sports_cultural_portal');

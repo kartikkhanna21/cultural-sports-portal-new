@@ -45,27 +45,23 @@ $i=1;
                 <label>Name</label>
                 <input type="text" class="form-control" value="<?php echo $name?>" name="name" disabled>
             </div>
-            <div >
-                <div class="form-group float-items" >
+            <div>
+            
+                <div class="form-group" style="width:100%;" >
                     <label>Event Name</label>
-                    <div class="input-group">
-                        <div>
-                            <select class="form-control" name="event" placeholder="Gender" required>
-                            <option value="" disabled selected hidden>Event Name</option>
-                            <?php
-                                $sql="SELECT * FROM `sports_list` WHERE activity='YES'";
-                                $result=mysqli_query($con, $sql);
-                                while ($row = $result->fetch_assoc()){
-                                    echo '<option value='.$row['event_name'].'>'.$row['event_name'].'</option>';
-
-                                }
-                            ?>
-                                
-                            </select>
-                            <div class="select-dropdown"></div>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control" placeholder="Event Name">
                 </div>
+    
+           
+
+            
+                <div class="form-group" style="width:100%;" >
+                    <label>Event Organizer</label>
+                    <input type="text" class="form-control" placeholder="Event Organizer">
+                </div>
+            </div>
+
+            <div>
     
                 <div class="form-group float-items">
                     <label>Event Level</label>
@@ -95,31 +91,18 @@ $i=1;
                         <div class="rs-select2 js-select-simple select--no-search">
                             <select class="form-control" name="participate" placeholder="" required>
                             <option value="" disabled selected hidden>Award/Participation</option>
-                                <option onclick="addBlock()">Award</option>
-                                <option>Participated</option>                           
-                            </select>
-                            <div class="select-dropdown"></div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="form-group float-items" id="award-field" >
-                    <label>Award level</label>
-                    <div class="input-group">
-                        <div class="rs-select2 js-select-simple select--no-search">
-                            <select class="form-control" name="award_level" placeholder="" required>
-                            <option value="" disabled selected hidden>Award Level</option>
-                                <option>None</option>
                                 <option>1st prize</option>
-                                <option>2nd prize</option> 
-                                <option>3rd prize</option>                         
+                                <option>2nd prize</option>
+                                <option>3rd prize</option>
+                                <option>Appreciation prize</option>
+                                <option>Consolidation prize</option>                      
                             </select>
                             <div class="select-dropdown"></div>
                         </div>
                     </div>
                 </div>
-
             </div>
+
            
 
 
@@ -130,9 +113,17 @@ $i=1;
                 <label>Date</label>
                 <input type="date" class="form-control" id="birthday" name="Date">
             </div>
-            <div class="form-group">
+            <div>
+
+            <div class="form-group float-items">
                 <label for="file">Upload File:</label> <br>
                 <input class="form-control" type="file" id="img" name="file" accept="application/pdf" >
+            </div>
+            <div class="form-group float-items">
+                <label for="file">Upload Photograph:</label> <br>
+                <input class="form-control" type="file" id="img" name="file" accept="image/x-png,image/jpeg" >
+            </div>
+            
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary btn-block btn-lg" name="submit" value="Upload"></input>

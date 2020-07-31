@@ -54,7 +54,7 @@
     <div class="header"><p>Gap</p></div>
     <br>
     <br>
-    <form action="excel1.php" method="post">
+    <form action="excel2.php" method="post">
     <div class="row">
         <div class="col-sm-2"> </div>
         <div class="col-sm-2">
