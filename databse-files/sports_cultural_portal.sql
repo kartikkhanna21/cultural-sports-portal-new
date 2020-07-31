@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sports_docs`
+-- Table structure for table `cutural_docs`
 --
 
-CREATE TABLE `sports_docs` (
+CREATE TABLE `cutural_docs` (
   `id` int(255) NOT NULL,
   `name` varchar(50) NOT NULL,
   `rollno` varchar(50) NOT NULL,
@@ -42,10 +42,10 @@ CREATE TABLE `sports_docs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `sports_docs`
+-- Dumping data for table `cutural_docs`
 --
 
-INSERT INTO `sports_docs` (`id`, `name`, `rollno`, `event_name`, `event_org`, `event_level`, `awards_participate`, `date`, `doc_name`, `photo_name`) VALUES
+INSERT INTO `cutural_docs` (`id`, `name`, `rollno`, `event_name`, `event_org`, `event_level`, `awards_participate`, `date`, `doc_name`, `photo_name`) VALUES
 (1, '', '18CE1034', '', '', '', '', '0000-00-00', '', ''),
 (2, '', '18CE1010', 'SWIMMING', '', 'College Level', 'Participated', '2020-07-03', 'am tut5.pdf', ''),
 (3, '', '18CE1010', 'CRICKET', '', 'College Level', 'Participated', '2020-07-02', 'dlda assign 1.pdf', ''),
@@ -77,9 +77,9 @@ INSERT INTO `sports_docs` (`id`, `name`, `rollno`, `event_name`, `event_org`, `e
 --
 
 --
--- Indexes for table `sports_docs`
+-- Indexes for table `cutural_docs`
 --
-ALTER TABLE `sports_docs`
+ALTER TABLE `cutural_docs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -87,9 +87,9 @@ ALTER TABLE `sports_docs`
 --
 
 --
--- AUTO_INCREMENT for table `sports_docs`
+-- AUTO_INCREMENT for table `cutural_docs`
 --
-ALTER TABLE `sports_docs`
+ALTER TABLE `cutural_docs`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 

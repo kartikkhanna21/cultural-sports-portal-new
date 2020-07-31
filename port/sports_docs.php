@@ -9,31 +9,21 @@ $organizer=$_POST['event-org'];
 $event_level=$_POST['event_level'];
 $participate=$_POST['participate'];
 $date=$_POST['Date'];
-$docname= $_FILES['file']['name'];
 
-$tmp_name= $_FILES['file']['tmp_name'];
+$target_dir = "Docs/Sports_docs/";
+$target_file = $target_dir . basename($_FILES["file"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+$docname=basename($_FILES["file"]["name"]);
 
-$photo_name=$_FILES['photo']['name'];
 
-$tmp2_name= $_FILES['photo']['tmp2_name'];
-
-$submitbutton= $_POST['submit'];
-$position= strpos($docname, "."); 
-$fileextension= substr($docname, $position + 1);
-$fileextension= strtolower($fileextension);
-
-$path= 'Docs/';
-$docname=$docname;
-move_uploaded_file($tmp_name, $path.$docname);
-
-$position2= strpos($photo_name, "."); 
-$fileextension2= substr($photo_name, $position2 + 1);
-$fileextension2= strtolower($fileextension2);
-
-$path2= 'Photo/';
-$photo_name=$photo_name;
-move_uploaded_file($tmp2_name, $path2.$photo_name);
-
+$target_dir = "Photo/Sports_photo/";
+$target_file = $target_dir . basename($_FILES["photo"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
+$photo_name=basename($_FILES["photo"]["name"]);
 
 $reg="INSERT into `sports_docs`(name,rollno,event_name,event_org,event_level,awards_participate,date,doc_name,photo_name) 
 values ('$name' ,'$roll', '$event' , '$organizer' , '$event_level' ,'$participate'  , '$date' , '$docname', '$photo_name')";
