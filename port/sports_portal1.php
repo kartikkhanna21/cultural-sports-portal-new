@@ -49,7 +49,7 @@ $i=1;
             
                 <div class="form-group" style="width:100%;" >
                     <label>Event Name</label>
-                    <input type="text" class="form-control" placeholder="Event Name">
+                    <input type="text" class="form-control" name="event" placeholder="Event Name">
                 </div>
     
            
@@ -57,7 +57,7 @@ $i=1;
             
                 <div class="form-group" style="width:100%;" >
                     <label>Event Organizer</label>
-                    <input type="text" class="form-control" placeholder="Event Organizer">
+                    <input type="text" class="form-control" name="event-org"placeholder="Event Organizer">
                 </div>
             </div>
 
@@ -121,9 +121,9 @@ $i=1;
             </div>
             <div class="form-group float-items">
                 <label for="file">Upload Photograph:</label> <br>
-                <input class="form-control" type="file" id="img" name="file" accept="image/x-png,image/jpeg" >
+                <input class="form-control" type="file" id="img" name="photo" accept="image/x-png,image/jpeg" >
             </div>
-            
+
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary btn-block btn-lg" name="submit" value="Upload"></input>

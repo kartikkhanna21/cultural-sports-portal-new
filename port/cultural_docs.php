@@ -20,6 +20,18 @@ $fileextension= strtolower($fileextension);
 $path= 'Docs/';
 $docname=$docname;
 move_uploaded_file($tmp_name, $path.$docname);
+
+$docname1= $_FILES['photo']['name'];
+
+$tmp_name= $_FILES['photo']['tmp_name'];
+$submitbutton= $_POST['submit'];
+$position= strpos($docname1, "."); 
+$fileextension= substr($docname1, $position + 1);
+$fileextension= strtolower($fileextension);
+
+$path= 'Photo/';
+$docname1=$docname;
+move_uploaded_file($tmp_name, $path.$docname);
 $reg="INSERT into `cultural_docs`(name,rollno,event_name,event_level,awards_participate,prize,date,doc_name) 
 values ('$name' ,'$roll', '$event' , '$event_level' ,'$participate' , '$award_level' , '$date' , '$docname')";
     mysqli_query($con, $reg);
