@@ -29,6 +29,9 @@ $i=1;
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gudea&display=swap" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -37,10 +40,13 @@ $i=1;
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
 <body>
+    <div class="rait-div">
+      <img src="images/logo-1-RAIT.png" alt="Dy Patil Logo" class="rait-logo">  <br>
+    </div>
     <div class="signin-form container col-sm-5">
         <form action="cultural_docs.php" method="post" enctype="multipart/form-data">
             <div class="form-header">
-                <h2>Form</h2>
+                <h2>CULTURAL FORM</h2>
             </div>
             <div class="form-group">
                 <label>Name</label>
@@ -183,19 +189,31 @@ $i=1;
     
     
 
-        body{
+    body{
 		color: #999;
 		background-image:url(../images/image1.jpg);
 		font-family: 'Roboto', sans-serif;
 		background-size: cover;
-	}
+    }
+    .rait-logo{
+     width: 10rem;
+     margin-left: 1rem;
+     padding-top: 1rem;
+     margin-bottom: 2rem;
+    }
+    @media only screen and (max-width: 415px){
+
+        .rait-div{
+           background-color: white;
+           text-align:center;
+        }
+    }
 	.form-control{
 		min-height: 41px;
 		box-shadow: none;
 		border-color: #e1e1e1;
 	}
 	.form-control:focus{
-		border-color: #00cb82;
 	}	
     .form-control, .btn{        
         border-radius: 3px;
@@ -206,26 +224,34 @@ $i=1;
 		border-color: #e1e1e1;
     }
     .form-control-2:focus{
-		border-color: #00cb82;
+		border-color: #c80000;
     }	
     .form-control-2, .btn{        
         border-radius: 3px;
         width: 207%;
     }
 	.form-header{
+        border-radius: 6px;
 		margin: -30px -30px 20px;
 		padding: 20px 20px 10px;
 		text-align: center;
-		background: #00cb82;
+        background-color: #3f0d12;
+        background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
 		border-bottom: 1px solid #eee;
 		color: #fff;
 	}
 	.form-header h2{
 		font-size: 32px;
 		font-weight: bold;
-        
-		font-family: 'Pacifico', sans-serif;
+        font-family: 'PT Sans', sans-serif;
     }
+
+    .form-header p{
+		margin: 20px 0 15px;
+		font-size: 17px;
+		line-height: normal;
+		font-family: 'Courgette', sans-serif;
+	}
 
     .signin-form{
 		margin: 0 auto;	
@@ -254,10 +280,10 @@ $i=1;
 	  }
     .signin-form form{
 		color: #999;
-		border-radius: 3px;
+		border-radius: 6px;
     	margin-bottom: 15px;
-        background: #f0f0f0;
-        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        background-color: #eeeded;
+        box-shadow: 0px 0px 18px -3px rgba(0,0,0,0.7);
         padding: 30px;
     }
 	.signin-form .form-group{
@@ -268,18 +294,21 @@ $i=1;
 		font-size: 13px;
 	}
     .signin-form .btn{        
-        font-size: 16px;
+        font-size: 17px;
         font-weight: bold;
-		background: #00cb82;
+        background-color: #3f0d12;
+        background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+        font-family: 'Inter', sans-serif;
 		border: none;
 		min-width: 200px;
     }
 	.signin-form .btn:hover, .signin-form .btn:focus{
-		background: #00b073 !important;
+        background-color: #3f0d12;
+        background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%) !important;
         outline: none;
 	}
     .signin-form a{
-		color: #00cb82;		
+		color: #c80000;		
 	}
     .signin-form a:hover{
 		text-decoration: underline;
@@ -294,6 +323,12 @@ $i=1;
             width: 100%;
         }
 	  }
+    .body-bakcground{     
+        background-repeat: no-repeat;
+       
+    }
+    .background-img{
+    }
     </style>
     <script src="navbar.js"></script>
 <script>
