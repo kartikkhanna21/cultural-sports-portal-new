@@ -54,10 +54,10 @@
     <div class="header"><p>Gap</p></div>
     <br>
     <br>
-    <form action="excel1.php" method="post">
+    <form action="sports_downlaod.php" method="post">
     <div class="row">
-        <div class="col-sm-2"> </div>
-        <div class="col-sm-2">
+        <div class="col-sm-2" > </div>
+        <div class="col-sm-8  container-add-event" style="margin-bottom: 2rem;">
             <div class="name">YEAR</div>
             <div class="value">
                 <select name="year" id="year">
@@ -66,61 +66,29 @@
                     <option value="2020-21">2020-21</option>
                 </select>
             </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="name">EVENT</div>
-                <div class="value">
-				    <select name="event" id="event">
-                         <option value="ALL">ALL</option>
-                         <?php
-                         $con= mysqli_connect('localhost','root','','sports_cultural_portal');
-                         $sql="SELECT * FROM sports_list WHERE activity='YES'";
-                         $res=mysqli_query($con,$sql);
-                         while ($row = $res->fetch_assoc()){
-                            echo '
-                            <option value="'.$row['id'].'">'.$row['event_name'].'</option>
-                            ';
-                         }
-                         ?>
-                         
-				    </select>
-                </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="name">LEVEL</div>
-            <div class="value">
-                <select name="level" id="level">
-                        <option value="National">National</option>
-                        <option value="Intercollege">Inter-College</option>
-                </select>
+
+            <div class="row" style="margin-top: 1rem; margin-bottom:1rem;">
+            
+              <div class="name" style="float:left; width: 33%;">
+                <input type="submit" class="btn btn-primary btn-sm" name = "report" value="Get report">
+              </div>
+
+              <div class="name" style="float:left; width: 33%;">
+                <input type="submit" class="btn btn-primary btn-sm" name = "certi" value="Download certificates">
+              </div>
+
+              <div class="name" style="float:left; width: 33%;">
+                <input type="submit" class="btn btn-primary btn-sm" name = "photo" value="Download photographs">
+              </div>
             </div>
+
+
         </div>
-        <div class="col-sm-2">
-            <div class="name">CERTIFICATION</div>
-            <div class="value">
-                <select name="certi" id="certi">
-                        <option value="Awards">Awards</option>
-                        <option value="Participation">Participation</option>
-                </select>
-            </div>
+        
         </div>
-        <div class="col-sm-2">
-            <br>
-            <input type="button" class="btn btn-primary btn-sm" name="search" value="SEARCH"/>
-        </div>
-    </div>
-    
-    <br><br>
-    <div class="container">
-    <div class="row">
-        <div class="col-sm-2"> </div>
-        <div class="col-sm-2">
-            <div class="name">
-    
-    <input type="submit" class="btn btn-primary btn-sm" name = "report" value="Get report">
-    </div>
-    </div>
-    </div>
+       
+ 
+     
     </div>
   </form>
     <br>

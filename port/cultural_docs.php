@@ -10,7 +10,7 @@ $event_level=$_POST['event_level'];
 $participate=$_POST['participate'];
 $date=$_POST['Date'];
 
-$target_dir = "Docs/Cutural_docs/";
+$target_dir = "Docs/Cultural_docs/";
 $target_file = $target_dir . basename($_FILES["file"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -25,7 +25,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file);
 $photo_name=basename($_FILES["photo"]["name"]);
 
-$reg="INSERT into `cutural_docs`(name,rollno,event_name,event_org,event_level,awards_participate,date,doc_name,photo_name) 
+$reg="INSERT into `cultural_docs`(name,rollno,event_name,event_org,event_level,awards_participate,date,doc_name,photo_name) 
 values ('$name' ,'$roll', '$event' , '$organizer' , '$event_level' ,'$participate'  , '$date' , '$docname', '$photo_name')";
     mysqli_query($con, $reg);
 /*mysqli_select_db($con, 'login_signup');
