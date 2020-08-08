@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <body>
@@ -6,18 +5,7 @@
 <?php
 $con= mysqli_connect('localhost','root','','sports_cultural_portal');
    
-$yea="2020-21";
-$year=substr($yea, 0, 4);
-$n=(int)($year);
-$n=$n+1;
-$year1=strval($n);
-$year .="-07-01" ;
-$year1 .="-06-30";
-
-$sql="SELECT DISTINCT name from `cultural_docs` WHERE
-(date BETWEEN '$year'AND '$year1') 
-AND (event_level='College Level')
-ORDER BY event_name";
+$sql="SELECT DISTINCT YEAR(date) from `cultural_docs` ";
 $setRec = mysqli_query($con, $sql);
 $docs=array();
 
@@ -28,14 +16,39 @@ $docs=array();
         exit();
     }
    while($row = mysqli_fetch_array($setRec)) {
-    $names[] = $row['name'];
+    $names[] = $row;
  }
  foreach ($names as $name){
-    print_r($name);
+ $yea=$name[0];
+ $n=(int)($yea);
+ $n=strval($n);
+ $year=substr($n, 2, 4);
+ $year=(int)($year);
+ $year=$year+1;
+ $year=strval($year);
+ $yea .="-".$year;
+ print_r($yea);
+    
  }
- print_r($names);
- print_r($year);
-/*
+ #print_r($names);
+ /*
+ $yea=$names[0][0];
+ $n=(int)($yea);
+ $n=strval($n);
+ $year=substr($n, 2, 4);
+ $year=(int)($year);
+ $year=$year+1;
+ $year=strval($year);
+ $yea .="-".$year;
+ print_r($yea);
+ /*
+ $year=substr($names[0], 0, 4);
+ $n=(int)($year);
+ $n=$n+1;
+ $year1=strval($n);
+ $year .=$year1 ;
+
+
  $file_folder = "Docs/Cultural_docs/";
     $zipname = 'documents.zip';
     $zip = new ZipArchive;

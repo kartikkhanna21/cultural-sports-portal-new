@@ -57,10 +57,36 @@
         <div class="col-sm-8  container-add-event" style="margin-bottom: 2rem;">
             <div class="name">YEAR</div>
             <div class="value">
-                <select name="year" id="year">
-                    <option value="2018-19">2018-19</option>
-                    <option value="2019-20">2019-20</option>
-                    <option value="2020-21">2020-21</option>
+            <select name="year" id="year">
+            <?php
+              $con= mysqli_connect('localhost','root','','sports_cultural_portal');
+   
+              $sql="SELECT DISTINCT YEAR(date) from `cultural_docs` ";
+              $setRec = mysqli_query($con, $sql);
+              $names=array();
+              if (!$setRec) {
+                  printf("Error: %s\n", mysqli_error($con));
+                  exit();
+              }
+                while($row = mysqli_fetch_array($setRec)) {
+                  $names[] = $row;
+              }
+                  foreach ($names as $name){
+                  $yea=$name[0];
+                  $n=(int)($yea);
+                  $n=strval($n);
+                  $year=substr($n, 2, 4);
+                  $year=(int)($year);
+                  $year=$year+1;
+                  $year=strval($year);
+                  $yea .="-".$year;
+                  echo '
+                  <option value="'.$yea.'">'.$yea.'</option>
+                  
+                  ';
+                  }
+
+            ?>
                 </select>
             </div>
 
