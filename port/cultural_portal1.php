@@ -26,7 +26,7 @@ $i=1;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Cultural Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">

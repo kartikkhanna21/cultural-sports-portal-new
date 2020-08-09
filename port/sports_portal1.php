@@ -25,7 +25,7 @@ $i=1;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Sports Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
@@ -37,8 +37,26 @@ $i=1;
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+
 </head>
+
 <body class="body-bakcground">
+<script type="text/javascript">
+(function(window, location) {
+    history.replaceState(null, document.title, location.pathname+"#!/stealingyourhistory");
+    history.pushState(null, document.title, location.pathname);
+
+    window.addEventListener("popstate", function() {
+      if(location.hash === "#!/stealingyourhistory") {
+            history.replaceState(null, document.title, location.pathname);
+            setTimeout(function(){
+              location.replace("choice.php");
+            },0);
+      }
+    }, false);
+}(window, location));
+</script>
     <div class="rait-div">
       <img src="images/logo-1-RAIT.png" alt="Dy Patil Logo" class="rait-logo">  <br>
     </div>

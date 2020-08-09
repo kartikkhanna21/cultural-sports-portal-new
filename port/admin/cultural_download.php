@@ -25,6 +25,8 @@ $heading="\t\t"."CULTURAL PARTICIPATION IN ".$yea;
 echo ucwords($heading)."\n";
 
 $count=0;
+$count_awards=0;
+$count_participate=0;
 $sql="SELECT DISTINCT event_level from `cultural_docs` WHERE
     (date BETWEEN '$year'AND '$year1') ";
     $setRec = mysqli_query($con, $sql);
@@ -47,6 +49,12 @@ $sql="SELECT DISTINCT event_level from `cultural_docs` WHERE
         
         while ($rec = mysqli_fetch_row($setRec)) {  
             $rowData = '';  
+            if($rec[4]=='Appreciation prize'){
+                $count_participate++;
+            }
+            else{
+                $count_awards++;
+            }
             foreach ($rec as $value) {  
                 $value = '"' . $value . '"' . "\t";  
                 $rowData .= $value;          
@@ -59,8 +67,9 @@ $sql="SELECT DISTINCT event_level from `cultural_docs` WHERE
      }
 
 $total="\t\tTotal Number of Students = ".$count;
-echo ucwords($total);
-
+echo "\t\tTotal Number of Students = ".$count;
+echo "\n\t\tTotal Awards Won = ".$count_awards;
+echo "\n\t\tOnly Participated = ".$count_participate;
 
 
 }

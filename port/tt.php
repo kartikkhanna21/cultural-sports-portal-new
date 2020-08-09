@@ -5,7 +5,7 @@
 <?php
 $con= mysqli_connect('localhost','root','','sports_cultural_portal');
    
-$sql="SELECT DISTINCT YEAR(date) from `cultural_docs` ";
+$sql="SELECT DISTINCT YEAR(date),date from `cultural_docs` ";
 $setRec = mysqli_query($con, $sql);
 $docs=array();
 
@@ -17,7 +17,7 @@ $docs=array();
     }
    while($row = mysqli_fetch_array($setRec)) {
     $names[] = $row;
- }
+ }/*
  foreach ($names as $name){
  $yea=$name[0];
  $n=(int)($yea);
@@ -29,8 +29,8 @@ $docs=array();
  $yea .="-".$year;
  print_r($yea);
     
- }
- #print_r($names);
+ }*/
+ print_r($names);
  /*
  $yea=$names[0][0];
  $n=(int)($yea);
