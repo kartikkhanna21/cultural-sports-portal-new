@@ -69,17 +69,17 @@ $i=1;
 
             <div class="form-group float-items elem-size">
             <label >Event Level</label>
-            <input list="browsers" name="browser1"  placeholder="Event Level" class="form-control" name="event_level">
+            <input list="browsers" name="event_list" id="event_list" class="form-control" placeholder="Event Level" required>
             <datalist id="browsers">
             <option>National Level</option>
             <option>State Level</option>
             <option>College Level</option>
-            </datalist>           
+            </datalist>       
             </div>
            
             <div class="form-group float-items elem-size">
             <label>Award/Participation</label>
-                <input list="awards" class="form-control" placeholder="Award/Participation" name="participate" required/>
+                <input list="awards" class="form-control" id="participate" placeholder="Award/Participation" name="participate" required/>
                 <datalist id="awards">
                 <option>1st prize</option>
                 <option>2nd prize</option>
@@ -327,8 +327,8 @@ $i=1;
 	  }
     
 .body-bg{
-background-color: #b8c6db;
-background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%); 
+    background-color: #2b1331;
+  background-image: linear-gradient(315deg, #2b1331 0%, #b9abcf 74%);
 background-repeat:no-repeat; 
 min-height:100vh;
 }

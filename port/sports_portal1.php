@@ -92,7 +92,7 @@ $i=1;
 
             <div class="form-group float-items elem-size">
             <label >Event Level</label>
-            <input list="browsers" name="browser1"  placeholder="Event Level" class="form-control" name="event_level">
+            <input list="browsers" name="event_list" id="event_list" class="form-control" placeholder="Event Level" required>
             <datalist id="browsers">
             <option>National Level</option>
             <option>State Level</option>

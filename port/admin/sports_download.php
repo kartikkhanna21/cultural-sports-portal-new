@@ -21,7 +21,7 @@ if(isset($_POST['report']))
 $columnHeader = '';  
 $columnHeader =  "Sr No." . "\t" . "Event Name" . "\t" . "Event Organizer" . "\t" . "Event Level" . "\t" . "Participant"
                     . "\t" . "Awards/Prizes";
-$heading="\t\t"."CULTURAL PARTICIPATION IN ".$yea;
+$heading="\t\t"."SPORTS PARTICIPATION IN ".$yea;
 echo ucwords($heading)."\n";
 
 $count=0;
@@ -49,7 +49,7 @@ $sql="SELECT DISTINCT event_level from `sports_docs` WHERE
         
         while ($rec = mysqli_fetch_row($setRec)) {  
             $rowData = '';
-            if($rec[4]=='Appreciation prize'){
+            if($rec[4]=='Only Participation'){
                 $count_participate++;
             }
             else{

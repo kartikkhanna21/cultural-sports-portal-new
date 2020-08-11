@@ -53,96 +53,96 @@
         <label>SPORTS EVENTS REPORT</label> 
      </div> 
       
-  <div class="vertical-center">
+     <div class="vertical-center">
 
 
-    <div class="container ">
-    <br>
-    <br>
-    <form action="cultural_download.php" method="post">
-    <div class="row">
-        <div class="col-sm-2" > </div>
-        <div class="col-sm-8  container-add-event" style="margin-bottom: 2rem;">
-          <div>
-            <div class="name al-items"><h5 class="heading2">SELECT YEAR:</h5>
-            <div class=" form-group text-center">
-            <select name="year" id="year" class="form-control year-drop ">
-            <?php
-              $con= mysqli_connect('localhost','root','','sports_cultural_portal');
-   
-              $sql="SELECT DISTINCT YEAR(date) from `cultural_docs` ";
-              $setRec = mysqli_query($con, $sql);
-              $names=array();
-              if (!$setRec) {
-                  printf("Error: %s\n", mysqli_error($con));
-                  exit();
+<div class="container ">
+<br>
+<br>
+<form action="sports_download.php" method="post">
+<div class="row">
+    <div class="col-sm-2" > </div>
+    <div class="col-sm-8  container-add-event" style="margin-bottom: 2rem;">
+      <div>
+        <div class="name al-items"><h5 class="heading2">SELECT YEAR:</h5>
+        <div class=" form-group text-center">
+        <select name="year" id="year" class="form-control year-drop ">
+        <?php
+          $con= mysqli_connect('localhost','root','','sports_cultural_portal');
+
+          $sql="SELECT DISTINCT YEAR(date) from `sports_docs` ";
+          $setRec = mysqli_query($con, $sql);
+          $names=array();
+          if (!$setRec) {
+              printf("Error: %s\n", mysqli_error($con));
+              exit();
+          }
+            while($row = mysqli_fetch_array($setRec)) {
+              $names[] = $row;
+          }
+              foreach ($names as $name){
+              $yea=$name[0];
+              $n=(int)($yea);
+              $n=strval($n);
+              $year=substr($n, 2, 4);
+              $year=(int)($year);
+              $year=$year+1;
+              $year=strval($year);
+              $yea .="-".$year;
+              echo '
+              <option value="'.$yea.'" >'.$yea.'</option>
+              
+              ';
               }
-                while($row = mysqli_fetch_array($setRec)) {
-                  $names[] = $row;
-              }
-                  foreach ($names as $name){
-                  $yea=$name[0];
-                  $n=(int)($yea);
-                  $n=strval($n);
-                  $year=substr($n, 2, 4);
-                  $year=(int)($year);
-                  $year=$year+1;
-                  $year=strval($year);
-                  $yea .="-".$year;
-                  echo '
-                  <option value="'.$yea.'" >'.$yea.'</option>
-                  
-                  ';
-                  }
 
-            ?>
-            <option>2018-19</option>
-                </select>
-            </div>
-        </div>
-          
-
-            <div class="al-items" style="margin-top: 1rem; margin-bottom:1rem;">
-            
-              <div class="name" style="">
-                <input type="submit" class="btn  btn-sm btn-p" name = "report" value="Get report">
-              </div>
-
-              <div class="name" style="">
-                <input type="submit" class="btn  btn-sm btn-p" name = "certi" value="Download certificates">
-              </div>
-
-              <div class="name" style="">
-                <input type="submit" class="btn btn-sm btn-p" name = "photo" value="Download photographs">
-              </div>
-            </div>
-        </div>
-        </div>
-
-
-
-
-        </div>
-        
-        </div>
+        ?>
        
- 
-     
-    </div>
-    </form>
-    </div>
-    </div>
-    <br><br>
-
-
-  
-    <br>
-    <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-9">
+            </select>
         </div>
-        <div class="col-sm-1"></div>
     </div>
+      
+
+        <div class="al-items" style="margin-top: 1rem; margin-bottom:1rem;">
+        
+          <div class="name" style="">
+            <input type="submit" class="btn  btn-sm btn-p" name = "report" value="Get report">
+          </div>
+
+          <div class="name" style="">
+            <input type="submit" class="btn  btn-sm btn-p" name = "certi" value="Download certificates">
+          </div>
+
+          <div class="name" style="">
+            <input type="submit" class="btn btn-sm btn-p" name = "photo" value="Download photographs">
+          </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    </div>
+    
+    </div>
+   
+
+ 
+</div>
+</form>
+</div>
+</div>
+<br><br>
+
+
+
+<br>
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-9">
+    </div>
+    <div class="col-sm-1"></div>
+</div>
 
     <style>
 /*navbar styles */  

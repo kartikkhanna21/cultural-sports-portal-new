@@ -49,7 +49,7 @@ $sql="SELECT DISTINCT event_level from `cultural_docs` WHERE
         
         while ($rec = mysqli_fetch_row($setRec)) {  
             $rowData = '';  
-            if($rec[4]=='Appreciation prize'){
+            if($rec[4]=='Only Participation'){
                 $count_participate++;
             }
             else{

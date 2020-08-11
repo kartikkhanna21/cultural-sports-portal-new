@@ -6,7 +6,7 @@ $name=$_SESSION['name'];
 $roll=$_SESSION['username'];
 $event=$_POST['event'];
 $organizer=$_POST['event-org'];
-$event_level=$_POST['event_level'];
+$event_level=$_POST['event_list'];
 $participate=$_POST['participate'];
 $date=$_POST['Date'];
 

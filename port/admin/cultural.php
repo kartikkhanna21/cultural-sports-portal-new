@@ -96,7 +96,7 @@
                   }
 
             ?>
-            <option>2018-19</option>
+           
                 </select>
             </div>
         </div>
