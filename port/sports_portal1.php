@@ -41,7 +41,7 @@ $i=1;
 
 </head>
 
-<body class="body-bakcground">
+<body class="body-bg">
 <script type="text/javascript">
 (function(window, location) {
     history.replaceState(null, document.title, location.pathname+"#!/stealingyourhistory");
@@ -89,46 +89,29 @@ $i=1;
             </div>
 
             <div>
-    
-                <div class="form-group float-items">
-                    <label>Event Level</label>
-                    <div class="input-group">
-                        <div class="rs-select2 js-select-simple select--no-search">
-                            <select class="form-control" name="event_level" placeholder="" required>
-                            <option value="" disabled selected hidden>Event Level</option>
-                                <option>National level</option>
-                                <option>State level</option>
-                                <option>College Level</option>
-                            </select>
-                            <div class="select-dropdown"></div>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="form-group float-items elem-size">
+            <label >Event Level</label>
+            <input list="browsers" name="browser1"  placeholder="Event Level" class="form-control" name="event_level">
+            <datalist id="browsers">
+            <option>National Level</option>
+            <option>State Level</option>
+            <option>College Level</option>
+            </datalist>           
             </div>
-
-            <div>
-
-            
-
-
            
-                <div class="form-group float-items" >
-                    <label>Award/Participation</label>
-                    <div class="input-group">
-                        <div class="rs-select2 js-select-simple select--no-search">
-                            <select class="form-control" name="participate" placeholder="" required>
-                            <option value="" disabled selected hidden>Award/Participation</option>
-                                <option>1st prize</option>
-                                <option>2nd prize</option>
-                                <option>3rd prize</option>
-                                <option>Appreciation prize</option>
-                                <option>Consolidation prize</option>                      
-                            </select>
-                            <div class="select-dropdown"></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group float-items elem-size">
+            <label>Award/Participation</label>
+                <input list="awards" class="form-control" placeholder="Award/Participation" name="participate" required/>
+                <datalist id="awards">
+                <option>1st prize</option>
+                <option>2nd prize</option>
+                <option>3rd prize</option>
+                <option>Only Participation</option>
+                </datalist>                
             </div>
+
+        </div>
 
            
 
@@ -359,14 +342,38 @@ $i=1;
             width: 100%;
         }
 	  }
+      .body-bg{
+background-color: #b8c6db;
+background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%); 
+background-repeat:no-repeat; 
+min-height:100vh;
+}
+    .float-items{
+        float:left;
+        
+        width:50%;
+    }
+    .elem-size{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    @media only screen and (max-width: 1060px){
+        .float-items{
+            float: none;
+            min-width: 100%;
+        }
+        .elem-size{
+            min-width: 100%;
+            padding-left: none;
+            padding-right: none;
+        }
+	  }
+    
     .body-bakcground{     
         background-repeat: no-repeat;
        
     }
-    .background-img{
-    }
     </style>
-    <script src="navbar.js"></script>
 <script>
     function addBlock() {
         var elem = Document.getElementById('award-field');

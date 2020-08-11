@@ -162,22 +162,11 @@ while ($row = $res->fetch_assoc()){
 .culinary-logo-nav{
   height:50px;
 }
-@media only screen and (max-width: 380px){
-  .culinary-logo-nav{
-  height:36px;
-  margin-left: 9.5rem;
-}
-}
-@media only screen and (max-width: 330px){
-  .culinary-logo-nav{
-  height:36px;
-  margin-left:8rem;
-}
-}
+
 @media only screen and (max-width: 365px){
   .culinary-logo-nav{
   height:36px;
-  margin-left:10rem;
+  margin-left:0rem;
 }
 }
 .nav-look{

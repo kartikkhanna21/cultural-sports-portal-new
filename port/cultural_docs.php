@@ -53,8 +53,8 @@ $reg="INSERT into `documents`(name,event,date,doc_name) values ('$name' , '$even
     mysqli_query($con, $reg);
 
 }*/
-header("location:cultural_portal1.php");
+echo"<script>alert('The form Has been submitted successfully'); window.location='choice.php'</script>";
       
-    mysqli_close($con);
+mysqli_close($con);
     
 ?>

@@ -26,7 +26,7 @@ $i=1;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Cultural Form</title>
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@ $i=1;
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </head>
-<body>
+<body class="body-bg">
     <div class="rait-div">
       <img src="images/logo-1-RAIT.png" alt="Dy Patil Logo" class="rait-logo">  <br>
     </div>
@@ -54,7 +54,7 @@ $i=1;
             </div>
                 <div class="form-group" style="width:100%;" >
                     <label>Event Name</label>
-                    <input type="text" class="form-control" name="event" placeholder="Event Name">
+                    <input type="text" class="form-control" name="event" placeholder="Event Name" required>
                 </div>
     
             <div>
@@ -62,58 +62,50 @@ $i=1;
             </div>
                 <div class="form-group" style="width:100%;" >
                     <label>Event Organizer</label>
-                    <input type="text" class="form-control" name="event-org" placeholder="Event Organizer">
+                    <input type="text" class="form-control" name="event-org" placeholder="Event Organizer" required>
                 </div>
     
             <div>
 
-
-                <div class="form-group float-items">
-                    <label>Event Level</label>
-                    <div class="input-group">
-                        <div class="rs-select2 js-select-simple select--no-search">
-                            <select class="form-control" name="event_level" placeholder="" required>
-                            <option value="" disabled selected hidden>Event Level</option>
-                                <option>National level</option>
-                                <option>State level</option>
-                                <option>College Level</option>
-                            </select>
-                            <div class="select-dropdown"></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group float-items elem-size">
+            <label >Event Level</label>
+            <input list="browsers" name="browser1"  placeholder="Event Level" class="form-control" name="event_level">
+            <datalist id="browsers">
+            <option>National Level</option>
+            <option>State Level</option>
+            <option>College Level</option>
+            </datalist>           
+            </div>
+           
+            <div class="form-group float-items elem-size">
+            <label>Award/Participation</label>
+                <input list="awards" class="form-control" placeholder="Award/Participation" name="participate" required/>
+                <datalist id="awards">
+                <option>1st prize</option>
+                <option>2nd prize</option>
+                <option>3rd prize</option>
+                <option>Only Participation</option>
+                </datalist>                
             </div>
 
-            <div class="form-group float-items" >
-                    <label>Award/Participation</label>
-                    <div class="input-group">
-                        <div class="rs-select2 js-select-simple select--no-search ">
-                            <select class="form-control " name="participate" placeholder="" required>
-                            <option value="" disabled selected hidden>Award/Participation</option>
-                                <option>1st prize</option>
-                                <option>2nd prize</option>
-                                <option>3rd prize</option>
-                                <option>Appreciation prize</option>
-                                <option>Consolidation prize</option>                        
-                            </select>
-                            <div class="select-dropdown"></div>
-                        </div>
-                    </div>
-                </div>
+        </div>
 
-            <div>
+        <div>
+
+
+        <div>
           
            
             <div class="form-group">
                 <label>Date</label>
-                <input type="date" class="form-control" id="birthday" name="Date">
+                <input type="date" class="form-control" id="birthday" name="Date" required>
             </div>
             <div>
-            <div class="form-group float-items">
+            <div class="form-group float-items elem-size">
                 <label for="file">Upload File:</label> <br>
-                <input class="form-control" type="file" id="img" name="file" accept="application/pdf" >
+                <input class="form-control" type="file" id="img" name="file" accept="application/pdf" required>
             </div>
-            <div class="form-group float-items">
+            <div class="form-group float-items elem-size">
                 <label for="file">Upload Photograph:</label> <br>
                 <input class="form-control" type="file" id="img" name="photo" accept="image/x-png,image/jpeg" >
             </div>
@@ -213,8 +205,6 @@ $i=1;
 		box-shadow: none;
 		border-color: #e1e1e1;
 	}
-	.form-control:focus{
-	}	
     .form-control, .btn{        
         border-radius: 3px;
     }
@@ -286,9 +276,11 @@ $i=1;
         box-shadow: 0px 0px 18px -3px rgba(0,0,0,0.7);
         padding: 30px;
     }
-	.signin-form .form-group{
-		margin-bottom: 20px;
-	}		
+    .signin-form .form-group {
+        margin-bottom: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }	
 	.signin-form label{
 		font-weight: normal;
 		font-size: 13px;
@@ -315,22 +307,34 @@ $i=1;
     }
     .float-items{
         float:left;
+        
         width:50%;
+    }
+    .elem-size{
+        padding-left: 5px;
+        padding-right: 5px;
     }
     @media only screen and (max-width: 1060px){
         .float-items{
             float: none;
-            width: 100%;
+            min-width: 100%;
+        }
+        .elem-size{
+            min-width: 100%;
+            padding-left: none;
+            padding-right: none;
         }
 	  }
-    .body-bakcground{     
-        background-repeat: no-repeat;
-       
-    }
-    .background-img{
-    }
+    
+.body-bg{
+background-color: #b8c6db;
+background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%); 
+background-repeat:no-repeat; 
+min-height:100vh;
+}
+
     </style>
-    <script src="navbar.js"></script>
+
 <script>
     function addBlock() {
         var elem = Document.getElementById('award-field');

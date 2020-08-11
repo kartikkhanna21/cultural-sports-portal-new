@@ -4,6 +4,7 @@
     <title> Admin Student info with table </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -13,7 +14,7 @@
     <link href="main.css" rel="stylesheet">
     <link href="util.css" rel="stylesheet">
 </head>
-<body>
+<body >
 <nav class=" navbar navbar-expand-lg navbar-light slideInDown animated sticky-top nav-look">
         <img src="logo-1-RAIT.png" class="culinary-logo-nav">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +28,7 @@
          
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle look" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Search Students
+              Get Report
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" id="change" href="cultural.php">Cultural</a>
@@ -47,20 +48,29 @@
           </ul>
         </div>
       </nav>
-    <div class="container">
+
+     <div class="text-center heading">
+        <label>SPORTS EVENTS REPORT</label> 
+     </div> 
+      
+  <div class="vertical-center">
+
+
+    <div class="container ">
     <br>
     <br>
-    <form action="sports_downlaod.php" method="post">
+    <form action="cultural_download.php" method="post">
     <div class="row">
         <div class="col-sm-2" > </div>
         <div class="col-sm-8  container-add-event" style="margin-bottom: 2rem;">
-            <div class="name">YEAR</div>
-            <div class="value">
-                <select name="year" id="year">
-                <?php
+          <div>
+            <div class="name al-items"><h5 class="heading2">SELECT YEAR:</h5>
+            <div class=" form-group text-center">
+            <select name="year" id="year" class="form-control year-drop ">
+            <?php
               $con= mysqli_connect('localhost','root','','sports_cultural_portal');
    
-              $sql="SELECT DISTINCT YEAR(date) from `sports_docs` ";
+              $sql="SELECT DISTINCT YEAR(date) from `cultural_docs` ";
               $setRec = mysqli_query($con, $sql);
               $names=array();
               if (!$setRec) {
@@ -80,30 +90,36 @@
                   $year=strval($year);
                   $yea .="-".$year;
                   echo '
-                  <option value="'.$yea.'">'.$yea.'</option>
+                  <option value="'.$yea.'" >'.$yea.'</option>
                   
                   ';
                   }
 
-            ?>                   
-
+            ?>
+            <option>2018-19</option>
                 </select>
             </div>
+        </div>
+          
 
-            <div class="row" style="margin-top: 1rem; margin-bottom:1rem;">
+            <div class="al-items" style="margin-top: 1rem; margin-bottom:1rem;">
             
-              <div class="name" style="float:left; width: 33%;">
-                <input type="submit" class="btn btn-sm btn-p" name = "report" value="Get report">
+              <div class="name" style="">
+                <input type="submit" class="btn  btn-sm btn-p" name = "report" value="Get report">
               </div>
 
-              <div class="name" style="float:left; width: 33%;">
+              <div class="name" style="">
                 <input type="submit" class="btn  btn-sm btn-p" name = "certi" value="Download certificates">
               </div>
 
-              <div class="name" style="float:left; width: 33%;">
+              <div class="name" style="">
                 <input type="submit" class="btn btn-sm btn-p" name = "photo" value="Download photographs">
               </div>
             </div>
+        </div>
+        </div>
+
+
 
 
         </div>
@@ -113,7 +129,13 @@
  
      
     </div>
-  </form>
+    </form>
+    </div>
+    </div>
+    <br><br>
+
+
+  
     <br>
     <div class="row">
         <div class="col-sm-2"></div>
@@ -121,6 +143,7 @@
         </div>
         <div class="col-sm-1"></div>
     </div>
+
     <style>
 /*navbar styles */  
 /*toggler styles */ 
@@ -138,22 +161,11 @@
 .culinary-logo-nav{
   height:50px;
 }
-@media only screen and (max-width: 380px){
-  .culinary-logo-nav{
-  height:36px;
-  margin-left: 9.5rem;
-}
-}
-@media only screen and (max-width: 330px){
-  .culinary-logo-nav{
-  height:36px;
-  margin-left:8rem;
-}
-}
+
 @media only screen and (max-width: 365px){
   .culinary-logo-nav{
   height:36px;
-  margin-left:10rem;
+  margin-left:0rem;
 }
 }
 .nav-look{
@@ -278,12 +290,111 @@
   background-color: #3f0d12;
   background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
   color: white;
+  margin-bottom: 1rem;
+  width: 15rem;
 }
 .btn-p:hover{
   background-color: #3f0d12;
   background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
   color: silver;
 }
+.year-drop{
+  width:60%;
+  margin-top:4rem;
+  margin-left: 4rem;
+ 
+}
+.al-items{
+    float:left;
+    width:50%;
+  }
+
+.heading{
+    margin-top: 3rem;
+    font-family: 'Abel', sans-serif;
+    font-size: xx-large;
+    font-weight: bold;
+}
+.heading2{
+  font-family: 'Abel', sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+}
+.vertical-center {
+  min-height: 60%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 60vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+.name{
+    margin-bottom: 1rem;
+}
+@media only screen and (max-width: 993px){
+.al-items{
+    float: none;
+    width: 100%;
+}
+.year-drop{
+    width:55%;
+    margin-top:2rem;
+    margin-bottom: 2rem;
+  }
+  .row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+}
+@media only screen and (max-width: 768px){
+    .year-drop{
+        width:55%;
+        margin-top:2rem;
+        margin-bottom: 2rem;
+        margin-left: 5rem;
+        margin-right: 3rem;
+      }
+}
+@media only screen and (max-width: 455px){
+    .year-drop{
+        width:62%;
+        margin-top:2rem;
+        margin-bottom: 2rem;
+        margin-left: 4rem;
+        margin-right: 3rem;
+      }
+}
+@media only screen and (max-width: 430px){
+    .year-drop{
+        width:66%;
+        margin-top:2rem;
+        margin-bottom: 2rem;
+        margin-left: 3rem;
+        margin-right: 3rem;
+      }
+}
+
+@media only screen and (max-width: 330px){
+    .btn-p{
+        background-color: #3f0d12;
+        background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+        color: white;
+        margin-bottom: 1rem;
+        width: 10rem;
+      }
+      .year-drop{
+        width:66%;
+        margin-top:2rem;
+        margin-bottom: 2rem;
+        margin-left: 2rem;
+      }
+
+}
+
+
 /* navbar styles close */ 
 
 
