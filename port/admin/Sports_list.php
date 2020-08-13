@@ -25,13 +25,10 @@ $mysqli= new mysqli('localhost','root','','sports_cultural_portal');
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link item-look" href="index.php">Home <span class="sr-only">(current)</span></a>
-            </li>
-         
+            
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle look" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Search Students
+              Report
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" id="change" href="cultural.php">Cultural</a>
@@ -48,6 +45,9 @@ $mysqli= new mysqli('localhost','root','','sports_cultural_portal');
                   <a class="dropdown-item" id="change" href="Sports_list.php">Sports Event</a>
                 </div>
               </li>
+              <li class="nav-item">
+              <a class="nav-link item-look" href=#>Dashboard<span class="sr-only">(current)</span></a>
+            </li>
           </ul>
         </div>
       </nav>

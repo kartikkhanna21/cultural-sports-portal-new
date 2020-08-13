@@ -21,13 +21,13 @@ if($num==1){
 	$_SESSION['username']=$row['Roll_no'];
 	
 	
-	header('location:choice.php');
+	header('location:student/choice.php');
 }
 
 else if($num1==1){
 	$row = $result1->fetch_assoc();
 	$_SESSION['username']=$row['username'];
-	header('location:admin/admin.php');
+	header('location:admin/cultural.php');
 }
 else{
 	$_SESSION['invalid']= "true";
