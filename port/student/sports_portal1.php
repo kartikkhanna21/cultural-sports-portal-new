@@ -343,8 +343,7 @@ $i=1;
         }
 	  }
       .body-bg{
-background-color: #b8c6db;
-background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%); 
+
 background-repeat:no-repeat; 
 min-height:100vh;
 }
