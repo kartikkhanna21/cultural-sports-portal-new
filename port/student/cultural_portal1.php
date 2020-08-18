@@ -104,7 +104,7 @@ $i=1;
             <div>
             <div class="form-group float-items elem-size">
                 <label for="file">Upload File:</label> <br>
-                <input class="form-control" type="file" id="img" name="file" accept="application/pdf" required>
+                <input class="form-control" type="file" id="img" name="file" accept="application/pdf,image/jpeg,image/x-png" required>
             </div>
             <div class="form-group float-items elem-size">
                 <label for="file">Upload Photograph:</label> <br>

@@ -1,3 +1,69 @@
+<?php
+session_start();
+$con= mysqli_connect('localhost','root','','sports_cultural_portal');
+   
+$sql="SELECT DISTINCT YEAR(date) from `sports_docs` ";
+$setRec = mysqli_query($con, $sql);
+    
+    $names=array();
+    if (!$setRec) {
+        printf("Error: %s\n", mysqli_error($con));
+        exit();
+    }
+   while($row = mysqli_fetch_array($setRec)) {
+    $names[] = $row;
+ } 
+ $dates=array();
+        foreach ($names as $name){
+        $yea=$name[0];
+        $n=(int)($yea);
+        $n=strval($n);
+        $year=substr($n, 2, 4);
+        $year=(int)($year);
+        $year=$year+1;
+        $year=strval($year);
+        $yea .="-".$year;
+        $dates[]=$yea;
+    }
+    foreach ($dates as $yea){
+
+        $year=substr($yea, 0, 4);
+        $n=(int)($year);
+        $n=$n+1;
+        $year1=strval($n);
+        $year .="-07-01" ;
+        $year1 .="-06-30";
+
+        $sql="SELECT *  from `sports_docs` WHERE
+        (date BETWEEN '$year'AND '$year1') ";
+        $setRec = mysqli_query($con, $sql);
+        $total=mysqli_num_rows($setRec);        
+        mysqli_free_result($setRec); 
+        
+        $sql="SELECT *  from `sports_docs` WHERE
+        (date BETWEEN '$year'AND '$year1') 
+        AND awards_participate='Only Participation'";
+        $setRec = mysqli_query($con, $sql);
+        $participate=mysqli_num_rows($setRec);
+        mysqli_free_result($setRec); 
+        $awards=$total-$participate;
+
+        $sql="SELECT *  from `chart_sports` WHERE year='".$yea."'";
+        $setRec = mysqli_query($con, $sql);
+        $n=mysqli_num_rows($setRec);
+        mysqli_free_result($setRec); 
+        if($n==0){
+            $sql="INSERT into `chart_sports`(year,awards,participate,total) values('".$yea."','".$awards."','".$participate."','".$total."');";
+            mysqli_query($con, $sql);
+        } 
+        else{
+            $sql="update `chart_sports` set awards='".$awards."',participate='".$participate."',total='".$total."' where year='".$yea."'";;
+            mysqli_query($con, $sql);
+        }       
+        
+    }
+     
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -9,6 +75,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <link href="ad_student_t.css" rel="stylesheet">
     <!--link href="bgtest.css" rel="stylesheet"-->
     <link href="main.css" rel="stylesheet">
@@ -69,7 +136,7 @@
         <div class=" form-group text-center">
         <select name="year" id="year" class="form-control year-drop ">
         <?php
-          $con= mysqli_connect('localhost','root','','sports_cultural_portal');
+          
 
           $sql="SELECT DISTINCT YEAR(date) from `sports_docs` ";
           $setRec = mysqli_query($con, $sql);
@@ -95,9 +162,15 @@
               
               ';
               }
+              mysqli_free_result($setRec);
 
         ?>
-       
+        <option value="2019-20" >2019-20</option>
+        <option value="2018-19" >2018-19</option>
+        <option value="2017-18" >2017-18</option>
+              <option value="2016-17" >2016-17</option>
+            
+            
             </select>
         </div>
     </div>
@@ -133,19 +206,125 @@
 </form>
 </div>
 </div>
-<br><br>
+
+<div class="text-center heading">
+        <label>GENERATE BAR GRAPH</label> 
+     </div> 
+
+    
+<div class="vertical-center">
 
 
-
+<div class="container ">
 <br>
+<br>
+<form action="chart_sports.php" method="post" target="_blank">
 <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-9">
-    </div>
-    <div class="col-sm-1"></div>
-</div>
+    <div class="col-sm-2" > </div>
+    <div class="col-sm-8  container-add-event" style="margin-bottom: 2rem;">
+      <div>
+        <div class="name al-items"><h5 class="heading3">START YEAR:</h5>
+        <div class=" form-group text-center">
+        <select name="year1" id="year" class="form-control year-drop-2 ">
+        <?php
+          $con= mysqli_connect('localhost','root','','sports_cultural_portal');
 
-    <style>
+          $sql="SELECT DISTINCT YEAR(date) from `cultural_docs` ";
+          $setRec = mysqli_query($con, $sql);
+          $names=array();
+          if (!$setRec) {
+              printf("Error: %s\n", mysqli_error($con));
+              exit();
+          }
+            while($row = mysqli_fetch_array($setRec)) {
+              $names[] = $row;
+          }
+              foreach ($names as $name){
+              $yea=$name[0];
+              $n=(int)($yea);
+              $n=strval($n);
+              $year=substr($n, 2, 4);
+              $year=(int)($year);
+              $year=$year+1;
+              $year=strval($year);
+              $yea .="-".$year;
+              echo '
+              <option value="'.$yea.'" >'.$yea.'</option>
+              
+              ';
+              }
+              mysqli_free_result($setRec);
+        ?>
+            <option value="2019-20" >2019-20</option>
+        <option value="2018-19" >2018-19</option>
+        <option value="2017-18" >2017-18</option>
+              <option value="2016-17" >2016-17</option>
+            </select>
+        </div>
+    </div>
+      
+
+    <div class="name al-items"><h5 class="heading3">END YEAR:</h5>
+      <div class=" form-group text-center">
+      <select name="year2" id="year" class="form-control year-drop-2 ">
+      <option value="none" >none</option>
+      <?php
+        $con= mysqli_connect('localhost','root','','sports_cultural_portal');
+
+        $sql="SELECT DISTINCT YEAR(date) from `cultural_docs` ";
+        $setRec = mysqli_query($con, $sql);
+        $names=array();
+        if (!$setRec) {
+            printf("Error: %s\n", mysqli_error($con));
+            exit();
+        }
+          while($row = mysqli_fetch_array($setRec)) {
+            $names[] = $row;
+        }
+            foreach ($names as $name){
+            $yea=$name[0];
+            $n=(int)($yea);
+            $n=strval($n);
+            $year=substr($n, 2, 4);
+            $year=(int)($year);
+            $year=$year+1;
+            $year=strval($year);
+            $yea .="-".$year;
+            echo '
+            <option value="'.$yea.'" >'.$yea.'</option>
+            
+            ';
+            }
+            mysqli_free_result($setRec);
+      ?>
+            
+            <option value="2019-20" >2019-20</option>
+        <option value="2018-19" >2018-19</option>
+        <option value="2017-18" >2017-18</option>
+              
+          </select>
+      </div>
+  </div>
+
+
+      <div class="name" style="margin-top: 2rem;">
+      
+      <button type="submit" name="chart" class="btn  btn-sm btn-p">Generate Graph</button>
+      
+      </div>
+
+    </div>
+   </div>
+
+ 
+
+</div>
+     
+</div>
+</div>
+</form>
+
+<style type="text/css">
 /*navbar styles */  
 /*toggler styles */ 
 
@@ -162,7 +341,6 @@
 .culinary-logo-nav{
   height:50px;
 }
-
 @media only screen and (max-width: 365px){
   .culinary-logo-nav{
   height:36px;
@@ -287,11 +465,18 @@
 .dropdown-menu{
     background-color: #e6e6e6;
 }
+.body-bg{
+background-color: #b8c6db;
+background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%); 
+background-repeat:no-repeat; 
+min-height:100vh;
+}
 .btn-p{
   background-color: #3f0d12;
   background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
   color: white;
   margin-bottom: 1rem;
+  margin-top: 5px;
   width: 15rem;
 }
 .btn-p:hover{
@@ -305,13 +490,19 @@
   margin-left: 4rem;
  
 }
+.year-drop-2{
+  width:60%;
+  margin-top:2rem;
+  margin-left: 4rem;
+ 
+}
 .al-items{
     float:left;
     width:50%;
   }
 
 .heading{
-    margin-top: 3rem;
+    margin-top: 1rem;
     font-family: 'Abel', sans-serif;
     font-size: xx-large;
     font-weight: bold;
@@ -321,9 +512,13 @@
   font-weight: bold;
   font-size: x-large;
 }
+.heading3{
+  font-family: 'Abel', sans-serif;
+  font-weight: bold;
+  font-size: large;
+}
 .vertical-center {
-  min-height: 60%;  /* Fallback for browsers do NOT support vh unit */
-  min-height: 60vh; /* These two lines are counted as one :-)       */
+
 
   display: flex;
   align-items: center;
@@ -341,6 +536,12 @@
     margin-top:2rem;
     margin-bottom: 2rem;
   }
+.year-drop-2{
+    width:55%;
+    margin-top:2rem;
+    margin-left: 5rem;
+   
+}
   .row {
     display: -ms-flexbox;
     display: flex;
@@ -358,6 +559,12 @@
         margin-left: 5rem;
         margin-right: 3rem;
       }
+      .year-drop-2{
+        width:55%;
+        margin-top:2rem;
+        margin-left: 5rem;
+       
+    }
 }
 @media only screen and (max-width: 455px){
     .year-drop{
@@ -366,6 +573,11 @@
         margin-bottom: 2rem;
         margin-left: 4rem;
         margin-right: 3rem;
+      }
+      .year-drop-2{
+        width:60%;
+        margin-top:2rem;
+        margin-left: 4rem;
       }
 }
 @media only screen and (max-width: 430px){
@@ -376,8 +588,19 @@
         margin-left: 3rem;
         margin-right: 3rem;
       }
+      .year-drop-2{
+        width:66%;
+        margin-top:2rem;
+        margin-left: 3rem;
+      }
 }
-
+@media only screen and (max-width: 380px){
+  .year-drop-2{
+    width:73%;
+    margin-top:2rem;
+    margin-left: 2rem;
+  }
+}
 @media only screen and (max-width: 330px){
     .btn-p{
         background-color: #3f0d12;
@@ -390,6 +613,11 @@
         width:66%;
         margin-top:2rem;
         margin-bottom: 2rem;
+        margin-left: 2rem;
+      }
+      .year-drop-2{
+        width:67%;
+        margin-top:2rem;
         margin-left: 2rem;
       }
 

@@ -35,25 +35,11 @@ $reg="INSERT into `sports_docs`(name,rollno,event_name,event_org,event_level,awa
 values ('$name' ,'$roll', '$event' , '$organizer' , '$event_level' ,'$participate'  , '$date' , '$docname', '$photo_name')";
     mysqli_query($con, $reg);
 
-/*mysqli_select_db($con, 'login_signup');
-if (isset($_POST["submit"]))
-{
-$name=$_POST['name'];
-$event=$_POST['event_name'];
-$date=$_POST['Date'];
-        
 
-if($_FILES["file"]["name"]!="")
-{
-$pname = rand(1000,10000)."-".$_FILES["file"]["name"];
-$tname = $_FILES["file"]["tmp_name"];
-$uploads_dir = 'Docs';
-move_uploaded_file($tname, $uploads_dir.'/'.$tname);
-}
-$reg="INSERT into `documents`(name,event,date,doc_name) values ('$name' , '$event' , '$date' , '$tname')";
-    mysqli_query($con, $reg);
 
-}*/
+
+
+
 echo"<script>alert('The form Has been submitted successfully'); window.location='choice.php'</script>";
       
     mysqli_close($con);

@@ -11,6 +11,21 @@ $year1 .="-06-30";
 
 if(isset($_POST['report']))
 {
+    if($yea=="2016-17" or $yea=="2017-18" or $yea=="2018-19" or $yea=="2019-20"){
+
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename=' . 'cultural-data-'.$yea.'.xlsx');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize('../Docs/Cultural_excel/' . 'cultural-data-'.$yea.'.xlsx'));
+        readfile('../Docs/Cultural_excel/' . 'cultural-data-'.$yea.'.xlsx');
+
+        // Now update downloads count
+        
+    }
+    else{
     $xlname = $yea.'_Cultural_excel';
     header("Content-type: application/octet-stream");  
     header("Content-Disposition: attachment; filename=".$xlname.".xls");  
@@ -72,11 +87,17 @@ echo "\n\t\tTotal Awards Won = ".$count_awards;
 echo "\n\t\tOnly Participated = ".$count_participate;
 
 
-}
+}}
 
 else if(isset($_POST['certi'])){
 
                  
+    if($yea=="2016-17" or $yea=="2017-18" or $yea=="2018-19" or $yea=="2019-20"){
+        echo"<script>alert('Data is not available for this year'); window.location='sports.php'</script>";
+        
+
+    }   
+    else{
            
     $sql="SELECT doc_name from `cultural_docs` WHERE
     (date BETWEEN '$year'AND '$year1') ";
@@ -101,9 +122,14 @@ else if(isset($_POST['certi'])){
     readfile($zipname);
     unlink($zipname);
 }
-
+}
 else if(isset($_POST['photo'])){                 
-           
+    if($yea=="2016-17" or $yea=="2017-18" or $yea=="2018-19" or $yea=="2019-20"){
+        echo"<script>alert('Data is not available for this year'); window.location='sports.php'</script>";
+        
+
+    }   
+    else{  
     $sql="SELECT photo_name from `cultural_docs` WHERE
     (date BETWEEN '$year'AND '$year1') ";
     $setRec = mysqli_query($con, $sql);
@@ -127,7 +153,7 @@ else if(isset($_POST['photo'])){
     readfile($zipname);
     unlink($zipname);
 }
-
+}
 ?> 
 
 
